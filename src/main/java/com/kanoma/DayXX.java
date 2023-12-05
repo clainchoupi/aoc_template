@@ -2,13 +2,23 @@ package com.kanoma;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class DayXX {
+    private static final Logger logger = LogManager.getLogger(DayXX.class);
     public static void main(String[] args){
+        var startTimer = Instant.now();
         String day = "";
         File inputFile = new File("src/main/resources/DAY/"+day+".txt");
         partOne(inputFile);
+
+        var endTimer = Instant.now();
+        logger.info("Execution time: " + Duration.between(startTimer, endTimer).toMillis() + " ms");
     }
     
     private static void partOne(File file) {
